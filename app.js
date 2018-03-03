@@ -1,6 +1,10 @@
 const gameImages = prepareHand(data)
 const cards = document.querySelectorAll('.card')
+const scoreBoard = document.querySelector('.score')
+const endMessage = document.querySelector('.message')
 let selection = []
+let score = 0
+let winCount = 0
 
 function addListeners(cards) {
   cards.forEach((card, i) => {
@@ -16,6 +20,7 @@ function flip(card, e) {
     'style', 
     `background: url('./assets/cards/${gameImages[id].name}.jpeg') center/cover`
   )
+  card.classList.add('selected')
   selection.push(card)
   if (selection.length >= 2) compare(e) 
 }
@@ -23,26 +28,32 @@ function flip(card, e) {
 function compare(e) {
   let id1 = selection[0].dataset.id
   let id2 = selection[1].dataset.id
-  if (gameImages[id1]=== gameImages[id2]) {
-    removeCards(e)
-  } else {
+  if (!(gameImages[id1] === gameImages[id2])) {
     selection.forEach((card) => {
       setTimeout(() => {
         card.removeAttribute('style')
+        card.classList.remove('selected')
       }, 1000)
     })
     addListeners(selection)
+  } else {
+    winCount++
+    checkIfWon()
   }
+  score++
   selection = []
 }
 
-function removeCards(flipEvent) {
-  selection.forEach((card) => {
-    setTimeout(() => {
-      card.removeAttribute('style')
-      card.setAttribute('style', 'background: green')
-    }, 1000)
-  })
+function checkIfWon() {
+  if (winCount >= 12) {
+    gameOver()
+  }
+}
+
+function gameOver() {
+  let message = score > 20 ? 'You are not a jedi yet' : 'The force is strong with this one'
+  scoreBoard.innerHTML = `You won in ${score} tries!`
+  endMessage.innerHTML = message
 }
 
 function prepareHand(a) {
