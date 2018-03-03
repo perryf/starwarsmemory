@@ -1,7 +1,8 @@
 # Star Wars Memory Game
 
 ## Description
-(Play here)[https://perryf.github.io/starwarsmemory/]
+[Play here!](https://perryf.github.io/starwarsmemory/)
+
 Classic memory game with Star Wars images. A simple project made just for fun!
 
 Flip two cards and see if they match. Once all the cards are matched, you win! The game keeps track of how many flips you've made. Try to beat your best score!
