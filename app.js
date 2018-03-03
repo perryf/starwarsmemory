@@ -1,10 +1,39 @@
-const gameImages = prepareHand(data)
 const cards = document.querySelectorAll('.card')
 const scoreBoard = document.querySelector('.score')
 const endMessage = document.querySelector('.message')
+const gameImages = prepareHand(data) // TAKES DATA, CREATE INITIAL DECK
 let selection = []
 let score = 0
 let winCount = 0
+
+addListeners(cards)
+
+///////////////// FUNCTIONS TO PREPARE CARDS /////////////////
+
+function prepareHand(a) {
+  shuffle(a)
+  a = cutAndDouble(a)
+  shuffle(a)
+  return a
+}
+
+// Fisher-Yates shuffle algorithm
+function shuffle(a) {
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    const x = a[i]
+    a[i] = a[j]
+    a[j] = x
+  }
+}
+
+function cutAndDouble(a) {
+  a = data.filter((img, i) => i >= 12)
+  a.map(img => a.push(img))
+  return a
+}
+
+///////////////// FUNCTIONS TO PLAY GAME /////////////////
 
 function addListeners(cards) {
   cards.forEach((card, i) => {
@@ -55,28 +84,3 @@ function gameOver() {
   scoreBoard.innerHTML = `You won in ${score} tries!`
   endMessage.innerHTML = message
 }
-
-function prepareHand(a) {
-  shuffle(a)
-  a = cutAndDouble(a)
-  shuffle(a)
-  return a
-}
-
-// Fisher-Yates shuffle algorithm
-function shuffle(a) {
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    const x = a[i]
-    a[i] = a[j]
-    a[j] = x
-  }
-}
-
-function cutAndDouble(a) {
-  a = data.filter((img, i) => i >= 12)
-  a.map(img => a.push(img))
-  return a
-}
-
-addListeners(cards)

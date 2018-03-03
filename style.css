@@ -1,15 +1,16 @@
 @font-face {
   font-family: "Jedi";
-  src: url('./star_jedi/starjedi/Starjedi.ttf') format("truetype");
+  src: url('./assets/star_jedi/starjedi/Starjedi.ttf') format("truetype");
 }
 
 body {
+  margin: 0;
   background: url('./assets/hyperspace-bg.jpg') no-repeat center center fixed; 
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  height: 100vh;
+  height: 95vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -17,13 +18,13 @@ body {
 
 header {
   font-family: "Jedi";
-  font-size: 2em;
+  font-size: 1.4em;
   color: yellow;
   text-align: center;
 }
 
 header h1 {
-  margin: 8px;
+  margin: 0px;
 }
 
 footer {
@@ -35,7 +36,7 @@ footer {
   display: grid;
   grid-template-rows: repeat(4, 1fr);
   grid-template-columns: repeat(6, 1fr);
-  grid-gap: 20px;
+  grid-gap: 10px;
 }
 
 .card {
@@ -55,4 +56,20 @@ footer {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 24px;
   color: yellow;
+}
+
+@media (max-width: 770px) {
+  .gameboard {
+    display: grid;
+    grid-template-rows: repeat(8, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 4px;
+  }
+
+  .card {
+    height: 90px;
+    width: 90px;
+    margin: 4px auto;
+    border: solid white 2px;
+  }
 }
