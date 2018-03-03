@@ -1,9 +1,6 @@
-const cards = document.querySelectorAll('.card')
-
 const gameImages = prepareHand(data)
+const cards = document.querySelectorAll('.card')
 let selection = []
-
-addListeners(cards)
 
 function addListeners(cards) {
   cards.forEach((card, i) => {
@@ -24,7 +21,6 @@ function flip(card, e) {
 }
 
 function compare(e) {
-  console.log(selection)
   let id1 = selection[0].dataset.id
   let id2 = selection[1].dataset.id
   if (gameImages[id1]=== gameImages[id2]) {
@@ -41,12 +37,8 @@ function compare(e) {
 }
 
 function removeCards(flipEvent) {
-  console.log('match')
-  console.log(flipEvent)
   selection.forEach((card) => {
     setTimeout(() => {
-      console.log(card)
-      // card.removeEventListener('click', flipEvent)
       card.removeAttribute('style')
       card.setAttribute('style', 'background: green')
     }, 1000)
@@ -75,3 +67,5 @@ function cutAndDouble(a) {
   a.map(img => a.push(img))
   return a
 }
+
+addListeners(cards)
