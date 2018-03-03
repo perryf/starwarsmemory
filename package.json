@@ -1,0 +1,15 @@
+{
+  "name": "star-wars-memory-game",
+  "version": "1.0.0",
+  "description": "a classic memory game with star wars cards",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "star-wars",
+    "memory-game"
+  ],
+  "author": "Perry Fustero",
+  "license": "ISC"
+}
